@@ -6,25 +6,26 @@ use Illuminate\Http\Request;
 
 class CobaController extends Controller
 {
-    public function index ()
+     public function index()
     {
-        return 'test berhasil';
+        $friends = friends::paginate(2);
+
+        return view('index', compact('friends'));
     }
-
-    public function urutan ($ke)
+    public function create()
     {
-
-        $numbers = [
-            ['ke' => $ke, 'nomor' => 20],
-            ['ke' => $ke, 'nomor' => 30],
-            ['ke' => $ke, 'nomor' => 40],
-        ];
-
-        return view('urutan', compact('numbers'));
+        return view('create');
     }
-
-    public function coba ($ke)
+    public function store(Request $request)
     {
-        return view('coba', ['ke' => $ke]);
+        // Validate the request...
+ 
+        $friends = new friends;
+ 
+        $friends->nama = $request->nama;
+        $friends->no_hp = $request->no_hp;
+        $friends->alamat = $request->alamat;
+ 
+        $friends->save();
     }
 }
