@@ -1,12 +1,12 @@
 @extends('layouts.app')
 
-@section('title', 'urutan')
+@section('title', 'Urutan')
 
+@section('content')
 
-
-@foreach ($number as $number)
-    <h1>urutan ke - {{ $ke }} </h1>
-    <h3>nomor ke - {{ $nomor }}</h3>
-@endforeach 
-
+@foreach ($numbers as $number)
+    <h1>Urutan ke - {{$number['ke']}}</h1>
+    <h3>Nomor ke - {{$number['nomor']}}</h3>
+@endforeach
+    
 @endsection
