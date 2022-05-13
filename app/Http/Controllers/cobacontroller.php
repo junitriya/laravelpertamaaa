@@ -3,18 +3,37 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\friends;
 
 class CobaController extends Controller
 {
-     public function index()
+    /*
+    public function index()
     {
-        $friends = friends::orderBy('id', 'desc')->paginate(2);
-
-        return view('friends.index', compact('friends'));
+        return 'test berhasil';
     }
-    public function create()
+
+    public function urutan($ke)
     {
-        return view('friends.create');
+        $friends = Friends::paginate(3);
+            return view('friends', compact('friends'));
+    }
+    public function coba($ke)
+    {
+        return view('coba', ['ke' => $ke]);
+    }
+*/
+
+
+    public function index ()
+    {
+        $friends = Friends::orderBy('id', 'desc')->pginate(3);
+        return view ('friends.create');
+    }
+
+    public function create ()
+    {
+        return view ('friends.create');
     }
     public function store(Request $request)
     {
@@ -24,6 +43,8 @@ class CobaController extends Controller
             'no_hp' => 'required|numeric',
             'alamat' => 'required',
         ]);
+
+
         $friends = new friends;
  
         $friends->nama = $request->nama;
@@ -34,6 +55,7 @@ class CobaController extends Controller
 
         return redirect('/');
     }
+
     public function show($id)
     {
         $friend = Friends::where('id', $id)->frist();
@@ -58,11 +80,17 @@ class CobaController extends Controller
             'alamat' => $request->alamat,
         ]);
 
+       
+       
+       
         return redirect('/');
+
     }
+
     public function destroy($id)
     {
         Friends::find($id)->delete();
         return redirect('/');
     }
+    
 }
