@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\friends;
 
-class CobaController extends Controller
+class cobacontroller extends Controller
 {
     /*
     public function index()
@@ -27,8 +27,8 @@ class CobaController extends Controller
 
     public function index ()
     {
-        $friends = Friends::orderBy('id', 'desc')->pginate(3);
-        return view ('friends.create');
+        $friends = Friends::orderBy('id', 'desc')->paginate(3);
+        return view ('friends.index');
     }
 
     public function create ()

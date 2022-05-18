@@ -1,8 +1,9 @@
 <?php
-use App\Http\controllers\GroupsController;
-use Illuminate\Support\Facades\Route;
-use App\Http\controllers\cobacontroller;
 
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\friends;
+use App\Http\Controllers\CobaController;
+use App\Http\Controllers\GroupsController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,30 +14,24 @@ use App\Http\controllers\cobacontroller;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-/*Route::get('/coba', function () {
-    return view('coba');
-});
-
-Route::get('/coba', function () {
-    return view('coba');
-});
-Route::get('/coba/{no}', [cobacontroller::class, 'coba')];
-Route::get('/test', [cobacontroller::class, 'index']);
-Route::get('/test/{ke}', [cobacontroller::class, 'urutan']);
-
-*/
-
-// Route::get('', [cobacontroller::class, 'index']);
-// Route::get('/friends', [cobacontroller::class, 'index']);
-// Route::get('/friends/create', [cobacontroller::class, 'create']);
-// Route::post('/friends', [cobacontroller::class, 'store']);
-// Route::get('/friends/{id}', [cobacontroller::class, 'show']);
-// Route::get('/friends/{id}edit', [cobacontroller::class, 'edit']);
-// Route::put('/friends/{id}', [cobacontroller::class, 'update']);
-// Route::delete('/friends/{id}', [cobacontroller::class, 'destroy']);
-
+// Route::get('/dashboard',function(){
+//     return view('dashboard.index');
+// });
+// Route::get('/coba/{no}', [App\Http\Controllers\CobaController::class,'coba']);
+// Route ::get('/test',[App\Http\Controllers\CobaController::class,'index']);
+// Route ::get('/friends','App\Http\Controllers\CobaController@index');
+// Route ::get('/friends/create','App\Http\Controllers\CobaController@create');
+// Route ::post('/friends','App\Http\Controllers\CobaController@store');
+// Route ::get('/friends/{id}','App\Http\Controllers\CobaController@show');
+// Route ::get('/friends/{id}/edit','App\Http\Controllers\CobaController@edit');
+// Route ::put('/friends/{id}','App\Http\Controllers\CobaController@update');
+// Route ::delete('/friends/{id}','App\Http\Controllers\CobaController@destroy');
+// Route ::resource('/friends','App\Http\Controllers\CobaController');
+Route ::get('','App\Http\Controllers\CobaController@index');
 Route::resources([
-    'friends' => cobacontroller::class,
+    'friends' => CobaController::class,
     'groups' => GroupsController::class,
 ]);
+Route ::get('/groups/addmember/{group}','App\Http\Controllers\GroupsController@addmember');
+Route ::put('/groups/addmember/{group}','App\Http\Controllers\GroupsController@updateaddmember');
+Route ::put('/groups/deleteaddmember/{group}','App\Http\Controllers\GroupsController@deleteaddmember');
