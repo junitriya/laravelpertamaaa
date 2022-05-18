@@ -3,24 +3,23 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\friends;
+use App\Models\Friends;
 
-class cobacontroller extends Controller
+class CobaController extends Controller
 {
     /*
     public function index()
     {
-        return 'test berhasil';
+            return 'test berhasil';
     }
-
     public function urutan($ke)
     {
         $friends = Friends::paginate(3);
-            return view('friends', compact('friends'));
+            return view ('friend', compact('friends'));
     }
     public function coba($ke)
     {
-        return view('coba', ['ke' => $ke]);
+            return view ('coba', ['ke' => $ke]);
     }
 */
 
@@ -28,7 +27,7 @@ class cobacontroller extends Controller
     public function index ()
     {
         $friends = Friends::orderBy('id', 'desc')->paginate(3);
-        return view ('friends.index');
+        return view ('friends.index', compact('friends'));
     }
 
     public function create ()
@@ -38,17 +37,17 @@ class cobacontroller extends Controller
     public function store(Request $request)
     {
         // Validate the request...
+
         $request->validate([
-            'nama' => 'required|unique:friens|max:255',
-            'no_hp' => 'required|numeric',
+            'nama' => 'required|unique:friends|max:255',
+            'no_telp' => 'required|numeric',
             'alamat' => 'required',
         ]);
-
-
-        $friends = new friends;
+ 
+        $friends = new Friends;
  
         $friends->nama = $request->nama;
-        $friends->no_hp = $request->no_hp;
+        $friends->no_telp = $request->no_telp;
         $friends->alamat = $request->alamat;
  
         $friends->save();
@@ -58,38 +57,38 @@ class cobacontroller extends Controller
 
     public function show($id)
     {
-        $friend = Friends::where('id', $id)->frist();
-        return view('friends.show', ['friends'=> $friend]);
+
+        $friends = friends::where('id', $id)->first();
+        return view('friends.show', ['friend'=> $friends]);
     }
     public function edit($id)
     {
-        $friend = Friends::where('id', $id)->frist();
-        return view('friends.edit', ['friend'=> $friend]);
+        $friends = friends::where('id', $id)->first();
+        return view('friends.edit', ['friend'=> $friends]);
     }
+
     public function update(Request $request, $id)
     {
+
         $request->validate([
-            'nama' => 'required|unique:friens|max:255',
-            'no_hp' => 'required|numeric',
+            'nama' => 'required|unique:friends|max:255',
+            'no_telp' => 'required|numeric',
             'alamat' => 'required',
         ]);
-
-        Friends::find($id)->update([
+ 
+        friends::find($id)->update([
             'nama' => $request->nama,
-            'no_hp' => $request->no_hp,
-            'alamat' => $request->alamat,
+            'no_telp' => $request->no_telp,
+            'alamat' => $request->alamat
         ]);
 
-       
-       
-       
         return redirect('/');
 
     }
 
     public function destroy($id)
     {
-        Friends::find($id)->delete();
+        friends::find($id)->delete();
         return redirect('/');
     }
     

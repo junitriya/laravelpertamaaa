@@ -3,11 +3,12 @@
 @section('title', 'Coba')
 
 @section('content')
-<civ class="card">
-<div class="card-body">
-    <h3>Nama Teman : {{ $friend['Nama']}}</h3>
-    <h3>No HP Teman: {{ $friend['No_HP']}}</h3>
-    <h3>Alamat Teman : {{ $friend['Alamat']}}</h3>
+<div class="card">
+    <div class= "card-body">
+        <h3>Nama Teman : {{ $friend['nama'] }}</h3>
+        <h3>No Telepon Teman : {{$friend['no_telp']}}</h3>
+        <h3>Alamat Teman : {{$friend['alamat']}}</h3>
     </div>
 </div>
 @endsection
+

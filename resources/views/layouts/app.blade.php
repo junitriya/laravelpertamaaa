@@ -11,7 +11,7 @@
     <title>@yield('title')</title>
   </head>
   <body>
-      <div class="container">
+    <div class="container">
   <nav class="navbar navbar-expand-lg navbar-light bg-light mb-5">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">Laravel Pertama</a>
@@ -22,16 +22,16 @@
       <div class="navbar-nav">
         <a class="nav-link active" aria-current="page" href="/">Home</a>
         <a class="nav-link" href="/friends">Friends</a>
-        <a class="nav-link" href="/">Groups</a>
+        <a class="nav-link" href="/groups">Groups</a>
+      </div>
     </div>
   </div>
 </nav>
 
+  @yield('content') 
 
-  @yield('content')
 
 
-  
 </div>
     <!-- Optional JavaScript; choose one of the two! -->
 
