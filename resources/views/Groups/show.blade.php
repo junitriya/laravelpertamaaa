@@ -1,0 +1,13 @@
+@extends('layouts.app')
+
+@section('title', 'Groups')
+
+@section('content')
+<div class="card">
+    <div class="card-body">
+        <h3>Nama Teman : {{$friend['Nama']}}</h3>
+        <h3>No Telepon Teman : {{$friend['No_HP']}}</h3>
+        <h3>Alamat Teman : {{$friend['alamat']}}</h3>
+</div>
+</div>
+@endsection
