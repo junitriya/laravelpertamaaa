@@ -30,6 +30,7 @@
 @endforeach
 
 <div>
-{{$friends-> links() }}
 </div>
 @endsection
+
+
